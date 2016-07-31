@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>ED-EMRG</name>
+	<targetVersion>0.14.1230</targetVersion>
+	<author>Jaxxa</author>
+	<url>https://ludeon.com/forums/index.php?topic=18995.0</url>
+	<description>
+This mod will add an Electro Magnetic Railgun (EMRG) to your colonies arsenal. This devastating weapon fires a steel projectile over a great distance; however each show will take an amount of energy directly from your batteries in addition to the power of the turret. The steel for the projectiles can be received from Hoppers attached to the turret.
+	</description>
+</ModMetaData>

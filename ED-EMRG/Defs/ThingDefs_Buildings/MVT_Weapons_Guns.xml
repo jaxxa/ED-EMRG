@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+  <!-- ================ abstract types =================== -->
+
+  <ThingDef Name="BaseGun" Abstract="True">
+    <category>Item</category>
+    <thingClass>ThingWithComps</thingClass>
+    <equipmentType>Primary</equipmentType>
+    <pathCost>10</pathCost>
+    <useHitPoints>True</useHitPoints>
+    <selectable>True</selectable>
+    <graphicData>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+    </graphicData>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>2</DeteriorationRate>
+      <SellPriceFactor>0.5</SellPriceFactor>
+    </statBases>
+    <altitudeLayer>Item</altitudeLayer>
+    <alwaysHaulable>True</alwaysHaulable>
+    <tickerType>Never</tickerType>
+    <techLevel>Industrial</techLevel>
+    <thingCategories>
+      <li>WeaponsRanged</li>
+    </thingCategories>
+    <inspectorTabs>
+      <li>ITab_Art</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li>
+        <compClass>CompEquippable</compClass>
+      </li>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Art">
+        <nameMaker>ArtName_WeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+    <smeltProducts>
+      <Steel>20</Steel>
+    </smeltProducts>
+  </ThingDef>
+
+
+  <ThingDef Name="BaseHumanGun" ParentName="BaseGun" Abstract="True">
+    <weaponTags>
+      <li>Gun</li>
+    </weaponTags>
+  </ThingDef>
+
+  <ThingDef Name="BaseBullet" Abstract="True">
+    <category>Projectile</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <thingClass>Bullet</thingClass>
+    <label>bullet</label>
+    <useHitPoints>False</useHitPoints>
+    <neverMultiSelect>True</neverMultiSelect>
+    <graphicData>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+  </ThingDef>
+
+
+<!-- ================= Devastator mortar ================= -->
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_EMRG</defName>
+    <label>explosive devastator shell</label>
+    <graphicData>
+      <texPath>Things/Building/Security/DevastatorShell</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>30</damageAmountBase>
+      <speed>90</speed>
+      <explosionRadius>3.5</explosionRadius>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>ArtilleryHitThickRoof</soundHitThickRoof>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseGun">
+    <defName>Artillery_EMRG</defName>
+    <label>devastator mortar</label>
+    <graphicData>
+      <texPath>Things/Building/Security/DevastatorGun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <description>Devastator launcher. Lobs bombs over walls. Semi inaccurate but long-ranged and fires high velocity projectiles.</description>
+    <techLevel>Spacer</techLevel>
+    <destroyOnDrop>True</destroyOnDrop>
+    <menuHidden>True</menuHidden>
+    <canBeSpawningInventory>false</canBeSpawningInventory>
+    <tradeability>Never</tradeability>
+    <statBases>
+      <MarketValue>5000</MarketValue>
+      <AccuracyTouch>1.0</AccuracyTouch>
+      <AccuracyShort>0.73</AccuracyShort>
+      <AccuracyMedium>0.40</AccuracyMedium>
+      <AccuracyLong>0.15</AccuracyLong>
+      <RangedWeapon_Cooldown>50</RangedWeapon_Cooldown>
+    </statBases>
+    <weaponTags>
+      <li>Artillery</li>
+      <li>Artillery_BaseDestroyer</li>
+    </weaponTags>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+        <hasStandardCommand>true</hasStandardCommand>
+        <projectileDef>Bullet_EMRG</projectileDef>
+        <forcedMissRadius>8</forcedMissRadius>
+        <ai_IsIncendiary>true</ai_IsIncendiary>
+        <warmupTicks>500</warmupTicks>
+        <minRange>20</minRange>
+        <range>500</range>
+        <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+        <burstShotCount>5</burstShotCount>
+        <soundCast>ChargeLance_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>35</muzzleFlashScale>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  
+</ThingDefs>

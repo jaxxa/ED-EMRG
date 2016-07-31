@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+
+	<ThingDef Name="BuildingBase" Abstract="True">
+		<category>Building</category>
+		<thingClass>Building</thingClass>
+		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>BuildingRubble</filthLeaving>
+	</ThingDef>
+
+<!--<thingClass>ED_EMRG.Building_TurretGun_EMRG</thingClass> -->
+		
+	<!--=============== Devastator mortar ===============-->
+	<ThingDef ParentName="BuildingBase">
+		<defName>Turret_EMRG</defName>
+		<label>Electro Magnetic RailGun</label>
+		<thingClass>EnhancedDevelopment.EMRG.Building_TurretGun_EMRG</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Security/DevastatorMortarBase</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(4,4)</drawSize>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<statBases>
+			<MaxHitPoints>360</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<WorkToMake>8000</WorkToMake>
+			<Beauty>-60</Beauty>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>10</explosiveRadius>
+				<explosiveDamageType>Flame</explosiveDamageType>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Mannable">
+				<manWorkType>Violent</manWorkType>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>1400</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<description>A magnetic catapult that launches projectiles with greater velocity and higher accuracy and ultimately much larger blast radius thanks to its 5 burst mode.
+Watch out for a huge explosion when destroyed.</description>
+		<size>(2,2)</size>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>0.4</fillPercent>
+		<stuffCategories>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>400</costStuffCount>
+		<costList>
+			<Steel>200</Steel>
+			<Component>10</Component>
+		</costList>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<designationCategory>Security</designationCategory>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+			<turretGunDef>Artillery_EMRG</turretGunDef>
+			<turretShellDef>Steel</turretShellDef>
+			<turretBurstWarmupTicks>200</turretBurstWarmupTicks>
+			<turretBurstCooldownTicks>500</turretBurstCooldownTicks>
+			<turretTopgraphicPath>Things/Building/Security/DevastatorGun</turretTopgraphicPath>
+			<buildingTags>
+				<li>Artillery</li>
+			</buildingTags>
+      <wantsHopperAdjacent>true</wantsHopperAdjacent>
+		</building>
+		<placeWorkers>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+	</ThingDef>
+		
+		
+</ThingDefs>
